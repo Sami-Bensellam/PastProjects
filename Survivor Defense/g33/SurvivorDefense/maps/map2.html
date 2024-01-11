@@ -1,0 +1,944 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../snake.css">
+  </head>
+  <body style="background-color:#8E8E8E">
+    <div class = "container">
+        <input id="btn" class = "button" type="button"  value="Start" /><br>
+        <button type="button" class = "button"> <img src="../images/rotate.png" onclick = "rotateTower()" height ="30" width="30" /></button>
+        <input id = "BackBtn" class = "button" type = "button" onclick="location.href = '../mainMenu.html'" value = "Back">
+        <input type="range" min="1" max="3" value="1" class="slider" id="difficultySlider">
+
+    </div>
+    
+    <canvas id="canvasId" class = "canvas"></canvas>
+
+    <div class="sidebar">
+        <p class= "draggableimg" id="BTurret" ondragstart="dragStart(event)"> <img id="image1" height="100" width="80"opacity = "1" alignment = center></p>
+        <p class= "draggableimg" id="Bgun" ondragstart="dragStart(event)"> <img id="image2" height="100" width="80"opacity = "1" alignment = center></p>
+        <p class= "draggableimg"  id="RTurret"  ondragstart="dragStart(event)"> <img id="image3" height="100" width="80"opacity = "1" alignment = center></p>
+        <p class= "draggableimg" id="Bcanon"  ondragstart="dragStart(event)"> <img id="image4" height="100" width="80"opacity = "1" alignment = center></p>
+        <p class= "draggableimg" id="Rgun"  ondragstart="dragStart(event)"> <img id="image5" height="100" width="80"opacity = "1" alignment = center></p>
+
+        <script type="text/javascript">
+            //set image source for image1
+            if(sessionStorage.getItem("tower1") == 1){
+                document.getElementById("image1").src = "../images/bbitmap.png";
+            }
+            if(sessionStorage.getItem("tower1") == 2){
+                document.getElementById("image1").src = "../images/bdrawing.png";
+            }
+            if(sessionStorage.getItem("tower1") == 3){
+                document.getElementById("image1").src = "../images/brtower.png";
+            }
+            if(sessionStorage.getItem("tower1") == 4){
+                document.getElementById("image1").src = "../images/bitmap.png";
+            }
+            if(sessionStorage.getItem("tower1") == 5){
+                document.getElementById("image1").src = "../images/drawing.png";
+            }
+            if(sessionStorage.getItem("tower1") == 6){
+                document.getElementById("image1").src = "../images/rtower.png";
+            }
+            if(sessionStorage.getItem("tower1") == 7){
+                document.getElementById("image1").src = "../images/tesseract.png";
+            }
+            //set image source for image2
+            if(sessionStorage.getItem("tower2") == 1){
+                document.getElementById("image2").src = "../images/bbitmap.png";
+            }
+            if(sessionStorage.getItem("tower2") == 2){
+                document.getElementById("image2").src = "../images/bdrawing.png";
+            }
+            if(sessionStorage.getItem("tower2") == 3){
+                document.getElementById("image2").src = "../images/brtower.png";
+            }
+            if(sessionStorage.getItem("tower2") == 4){
+                document.getElementById("image2").src = "../images/bitmap.png";
+            }
+            if(sessionStorage.getItem("tower2") == 5){
+                document.getElementById("image2").src = "../images/drawing.png";
+            }
+            if(sessionStorage.getItem("tower2") == 6){
+                document.getElementById("image2").src = "../images/rtower.png";
+            }
+            if(sessionStorage.getItem("tower2") == 7){
+                document.getElementById("image2").src = "../images/tesseract.png";
+            }
+
+            //set image source for image3
+            if(sessionStorage.getItem("tower3") == 1){
+                document.getElementById("image3").src = "../images/bbitmap.png";
+            }
+            if(sessionStorage.getItem("tower3") == 2){
+                document.getElementById("image3").src = "../images/bdrawing.png";
+            }
+            if(sessionStorage.getItem("tower3") == 3){
+                document.getElementById("image3").src = "../images/brtower.png";
+            }
+            if(sessionStorage.getItem("tower3") == 4){
+                document.getElementById("image3").src = "../images/bitmap.png";
+            }
+            if(sessionStorage.getItem("tower3") == 5){
+                document.getElementById("image3").src = "../images/drawing.png";
+            }
+            if(sessionStorage.getItem("tower3") == 6){
+                document.getElementById("image3").src = "../images/rtower.png";
+            }
+            if(sessionStorage.getItem("tower3") == 7){
+                document.getElementById("image3").src = "../images/tesseract.png";
+            }
+
+            //set image source for image4
+            if(sessionStorage.getItem("tower4") == 1){
+                document.getElementById("image4").src = "../images/bbitmap.png";
+            }
+            if(sessionStorage.getItem("tower4") == 2){
+                document.getElementById("image4").src = "../images/bdrawing.png";
+            }
+            if(sessionStorage.getItem("tower4") == 3){
+                document.getElementById("image4").src = "../images/brtower.png";
+            }
+            if(sessionStorage.getItem("tower4") == 4){
+                document.getElementById("image4").src = "../images/bitmap.png";
+            }
+            if(sessionStorage.getItem("tower4") == 5){
+                document.getElementById("image4").src = "../images/drawing.png";
+            }
+            if(sessionStorage.getItem("tower4") == 6){
+                document.getElementById("image4").src = "../images/rtower.png";
+            }
+            if(sessionStorage.getItem("tower4") == 7){
+                document.getElementById("image4").src = "../images/tesseract.png";
+            }
+
+            //set image source for image5
+            if(sessionStorage.getItem("tower5") == 1){
+                document.getElementById("image5").src = "../images/bbitmap.png";
+            }
+            if(sessionStorage.getItem("tower5") == 2){
+                document.getElementById("image5").src = "../images/bdrawing.png";
+            }
+            if(sessionStorage.getItem("tower5") == 3){
+                document.getElementById("image5").src = "../images/brtower.png";
+            }
+            if(sessionStorage.getItem("tower5") == 4){
+                document.getElementById("image5").src = "../images/bitmap.png";
+            }
+            if(sessionStorage.getItem("tower5") == 5){
+                document.getElementById("image5").src = "../images/drawing.png";
+            }
+            if(sessionStorage.getItem("tower5") == 6){
+                document.getElementById("image5").src = "../images/rtower.png";
+            }
+            if(sessionStorage.getItem("tower5") == 7){
+                document.getElementById("image5").src = "../images/tesseract.png";
+            }
+        </script>
+
+    <div class="wrapper">
+        <div class="btn-area">
+            <label for="chkBox" onclick="pauseClick()" >Pause</label>
+        </div>
+    </div>
+    
+    <input type="checkbox" name="" id="chkBox">
+    <div class="mainContnt">
+        <div class="box">
+            <div class=""></div>
+            <div class="">
+                <h1>Pause</h1>
+                <br><br>
+               
+                <label for="chkBox" type="button" class="buttonn" onclick="start()">-    Resume   -</label> 
+                <br><br>
+                <input type="button" class="button Quit" onclick="location.href = 'mainMenu.html';" value = "- Quit -">
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+    /* Dragging functions */
+
+    function dragStart(event) {
+        console.log("drag initiated");
+        event.dataTransfer.setData('key', event.currentTarget.id);
+    //    console.log(event.currentTarget.id);
+
+    }
+    var dropLoc = document.getElementById("canvasId");
+
+    dropLoc.ondragover = function(evt){
+        evt.preventDefault();
+       // console.log("It's dragging");
+    }
+    dropLoc.ondrop = function(evt){
+        var dropItem = evt.dataTransfer.getData('key'); 
+        evt.preventDefault();
+        console.log("its dropped");
+        console.log('dropped at', evt.offsetX, evt.offsetY);
+        console.log(dropItem);
+        createTower(evt.offsetX, evt.offsetY, dropItem);
+    }
+
+    /* Dragging functions */
+
+    
+    //1:north 2:east 3:south 4:west
+    var direction;
+    var myBtn = document.getElementById("btn");
+
+    var fromX;
+    var fromY;
+
+    var toX;
+    var toY;
+
+    var flag = 1;
+    var currMap = 2;
+
+    var c;
+    var ctx;
+    var img;
+
+    var f1;
+    var f2;
+    var f3;
+
+    var zombiesKilled = 0;
+    var gameHealth = 10;
+
+    const zombieArr = [];
+    const zombieImgArr = [];
+
+    const towerArr = [];
+    const towerImgArr = [];
+
+    var zombieCount;
+
+    var recentTower;
+	var zombieHealth = [] ;
+
+    var maxZombies=10;
+    var maxTowers=3;
+
+    var towerCounter = 0;
+    var DeadZombies=0;
+
+    if(sessionStorage.getItem("difficulty") == "easy"){
+                    difficultySlider.value = 1;
+    }
+    if(sessionStorage.getItem("difficulty") == "normal"){
+        difficultySlider.value = 2;
+    }
+    if(sessionStorage.getItem("difficulty") == "hard"){
+        difficultySlider.value = 3;
+    }
+
+
+    function Zombie(fromX, fromY, toX, toY, direction, id){
+        this.fromX = fromX;
+        this.fromY = fromY;
+        this.toX = toX;
+        this.toY = toY;
+        this.direction = direction;
+        this.id = id;
+
+        //console.log("new zombie");
+        //console.log(fromX);
+    }
+
+    function Tower(x, y){
+        this.x = x;
+        this.y = y;
+        var towerDirection;
+        var towerPosition;
+    }
+
+    window.onload = myClick;
+    function myClick(){
+        myBtn.onclick = start;
+        if(flag == 1){
+            flag--;
+        }
+        if(flag == 0){
+            flag++
+        }
+    }
+
+    var counter = 0;
+
+    function createZombie(startFX, startFY, startTX, startTY, dir){
+		
+		if(counter<maxZombies){  
+        let newZombie = new Zombie(startFX, startFY, startTX, startTY, dir, counter);
+        let newImg = document.createElement('img');
+        newImg.src = "zombie.png";
+        newImg.id = counter;
+        zombieArr[counter] = newZombie;
+        zombieImgArr[counter] = newImg;
+        //console.log(newZombie.fromX);
+        counter++;
+    }
+}
+    
+    var towerCounter = 0;
+
+    function createTower(x, y, towerType){
+	 if(maxTowers==towerCounter) return;
+        let newTower = new Tower(x, y);
+        newTower.direction = 1;
+        console.log("direction");
+        console.log(newTower.direction);
+
+        console.log(newTower.direction);
+        let newTowerImg = document.createElement('img');
+        //newTowerImg.src = "images/bbitmap(2).png";
+        //newTowerImg.onclick = function () { rotateTower(newTower)};
+        // 1 BTurret 2 Bgun 3 Cannon
+
+        if(towerType == 'BTurret'){
+            if(sessionStorage.getItem("tower1") == 1){
+                newTowerImg.src = "../images/bdup.png";
+                recentTower = 1;
+            }
+            if(sessionStorage.getItem("tower1") == 2){
+                newTowerImg.src = "../images/bsup.png";
+                recentTower = 2;
+            }
+            if(sessionStorage.getItem("tower1") == 3){
+                newTowerImg.src = "../images/bcup.png";
+                recentTower = 3;
+            }
+            if(sessionStorage.getItem("tower1") == 4){
+                newTowerImg.src = "../images/rdup.png";
+                recentTower = 4;
+            }
+            if(sessionStorage.getItem("tower1") == 5){
+                newTowerImg.src = "../images/rsup.png";
+                recentTower = 5;
+            }
+            if(sessionStorage.getItem("tower1") == 6){
+                newTowerImg.src = "../images/rcup.png";
+                recentTower = 6;
+            }
+            if(sessionStorage.getItem("tower1") == 7){
+                newTowerImg.src = "../images/stesseract.png";
+                recentTower = 6;
+            }
+            
+        }
+
+        if(towerType == 'Bgun'){
+            if(sessionStorage.getItem("tower2") == 1){
+                newTowerImg.src = "../images/bdup.png";
+                recentTower = 1;
+            }
+            if(sessionStorage.getItem("tower2") == 2){
+                newTowerImg.src = "../images/bsup.png";
+                recentTower = 2;
+            }
+            if(sessionStorage.getItem("tower2") == 3){
+                newTowerImg.src = "../images/bcup.png";
+                recentTower = 3;
+            }
+            if(sessionStorage.getItem("tower2") == 4){
+                newTowerImg.src = "../images/rdup.png";
+                recentTower = 4;
+            }
+            if(sessionStorage.getItem("tower2") == 5){
+                newTowerImg.src = "../images/rsup.png";
+                recentTower = 5;
+            }
+            if(sessionStorage.getItem("tower2") == 6){
+                newTowerImg.src = "../images/rcup.png";
+                recentTower = 6;
+            }
+            if(sessionStorage.getItem("tower2") == 7){
+                newTowerImg.src = "../images/stesseract.png";
+                recentTower = 7;
+            }
+            
+        }
+
+        if(towerType == 'RTurret'){
+            if(sessionStorage.getItem("tower3") == 1){
+                newTowerImg.src = "../images/bdup.png";
+                recentTower = 1;
+            }
+            if(sessionStorage.getItem("tower3") == 2){
+                newTowerImg.src = "../images/bsup.png";
+                recentTower = 2;
+            }
+            if(sessionStorage.getItem("tower3") == 3){
+                newTowerImg.src = "../images/bcup.png";
+                recentTower = 3;
+            }
+            if(sessionStorage.getItem("tower3") == 4){
+                newTowerImg.src = "../images/rdup.png";
+                recentTower = 4;
+            }
+            if(sessionStorage.getItem("tower3") == 5){
+                newTowerImg.src = "../images/rsup.png";
+                recentTower = 5;
+            }
+            if(sessionStorage.getItem("tower3") == 6){
+                newTowerImg.src = "../images/rcup.png";
+                recentTower = 6;
+            }
+            if(sessionStorage.getItem("tower3") == 7){
+                newTowerImg.src = "../images/stesseract.png";
+                recentTower = 7;
+            }
+            
+        }
+
+
+
+
+        if(towerType == 'Bcanon'){
+            if(sessionStorage.getItem("tower4") == 1){
+                newTowerImg.src = "../images/bdup.png";
+                recentTower = 1;
+            }
+            if(sessionStorage.getItem("tower4") == 2){
+                newTowerImg.src = "../images/bsup.png";
+                recentTower = 2;
+            }
+            if(sessionStorage.getItem("tower4") == 3){
+                newTowerImg.src = "../images/bcup.png";
+                recentTower = 3;
+            }
+            if(sessionStorage.getItem("tower4") == 4){
+                newTowerImg.src = "../images/rdup.png";
+                recentTower = 4;
+            }
+            if(sessionStorage.getItem("tower4") == 5){
+                newTowerImg.src = "../images/rsup.png";
+                recentTower = 5;
+            }
+            if(sessionStorage.getItem("tower4") == 6){
+                newTowerImg.src = "../images/rcup.png";
+                recentTower = 6;
+            }
+            if(sessionStorage.getItem("tower4") == 7){
+                newTowerImg.src = "../images/stesseract.png";
+                recentTower = 7;
+            }
+            //recentTower = 4;
+
+        }
+
+        if(towerType == 'Rgun'){
+            if(sessionStorage.getItem("tower5") == 1){
+                newTowerImg.src = "../images/bdup.png";
+                recentTower = 1;
+            }
+            if(sessionStorage.getItem("tower5") == 2){
+                newTowerImg.src = "../images/bsup.png";
+                recentTower = 2;
+            }
+            if(sessionStorage.getItem("tower5") == 3){
+                newTowerImg.src = "../images/bcup.png";
+                recentTower = 3;
+            }
+            if(sessionStorage.getItem("tower5") == 4){
+                newTowerImg.src = "../images/rdup.png";
+                recentTower = 4;
+            }
+            if(sessionStorage.getItem("tower5") == 5){
+                newTowerImg.src = "../images/rsup.png";
+                recentTower = 5;
+            }
+            if(sessionStorage.getItem("tower5") == 6){
+                newTowerImg.src = "../images/rcup.png";
+                recentTower = 7;
+            }
+            if(sessionStorage.getItem("tower5") == 7){
+                newTowerImg.src = "../images/stesseract.png";
+                recentTower = 8;
+            }
+            
+            //recentTower = 5;
+        }
+
+//        newTowerImg.id = towerCounter;
+        newTower.towerPosition = towerCounter;
+        console.log("towerPosition");
+        console.log(newTower.towerPosition);
+        towerArr[towerCounter] = newTower;
+        towerImgArr[towerCounter] = newTowerImg;
+        towerCounter = towerCounter + 1;
+    }
+
+  function towerShoot(tower){
+        for(let i = 0; i < zombieArr.length; i++){
+            //if(zombieArr[i].fromY < tower.y && zombieArr[i].fromX == tower.x && Math.floor(Math.random() * 2) == 1){
+            if(tower.direction == 1 && zombieArr[i].fromY < tower.y && zombieArr[i].fromX == tower.x){
+                if(zombieHealth[i]==100){
+                      zombieImgArr[i].src="../images/zombie_50.png";
+                      zombieHealth[i]-=50;
+                  }else if(zombieHealth[i]==50){
+                      zombieHealth[i]=0;
+                      zombieImgArr[i].src="../images/invis.png";
+                      if(++DeadZombies== maxZombies){
+                       
+                      
+                        // setTimeout(() => {  console.log("Game ends!"); }, 2000);
+                        alert("You Win!");
+                          window.location.replace("mainMenu.html");
+                        
+                        //  swal({
+                        // title: "You WIN!",
+                        // text: "You clicked them all!",
+                        // icon: "success",
+                        // button: "New Game",
+                        //     });
+                      }
+  
+                  }
+            }
+            if(tower.direction == 2 && zombieArr[i].fromX > tower.x && zombieArr[i].fromY == tower.y){
+                if(zombieHealth[i]==100){
+                      zombieImgArr[i].src="../images/zombie_50.png";
+                      zombieHealth[i]-=50;
+                  }else if(zombieHealth[i]==50){
+                      zombieHealth[i]=0;
+                      zombieImgArr[i].src="../images/invis.png";
+                      if(++DeadZombies== maxZombies){
+                       
+                      
+                        // setTimeout(() => {  console.log("Game ends!"); }, 2000);
+                        alert("You Win!");
+                          window.location.replace("mainMenu.html");
+                        
+                        //  swal({
+                        // title: "You WIN!",
+                        // text: "You clicked them all!",
+                        // icon: "success",
+                        // button: "New Game",
+                        //     });
+                      }
+  
+                  }
+            }
+            if(tower.direction == 3 && zombieArr[i].fromY > tower.y && zombieArr[i].fromX == tower.x){
+                if(zombieHealth[i]==100){
+                      zombieImgArr[i].src="../images/zombie_50.png";
+                      zombieHealth[i]-=50;
+                  }else if(zombieHealth[i]==50){
+                      zombieHealth[i]=0;
+                      zombieImgArr[i].src="../images/invis.png";
+                      if(++DeadZombies== maxZombies){
+                       
+                      
+                        // setTimeout(() => {  console.log("Game ends!"); }, 2000);
+                        alert("You Win!");
+                          window.location.replace("mainMenu.html");
+                        
+                        //  swal({
+                        // title: "You WIN!",
+                        // text: "You clicked them all!",
+                        // icon: "success",
+                        // button: "New Game",
+                        //     });
+                      }
+  
+                  }
+            }
+            if(tower.direction == 4 && zombieArr[i].fromX < tower.x && zombieArr[i].fromY == tower.y){
+                if(zombieHealth[i]==100){
+                      zombieImgArr[i].src="../images/zombie_50.png";
+                      zombieHealth[i]-=50;
+                  }else if(zombieHealth[i]==50){
+                      zombieHealth[i]=0;
+                      zombieImgArr[i].src="../images/invis.png";
+                      if(++DeadZombies== maxZombies){
+                       
+                      
+                        // setTimeout(() => {  console.log("Game ends!"); }, 2000);
+                        alert("You Win!");
+                          window.location.replace("mainMenu.html");
+                        
+                        //  swal({
+                        // title: "You WIN!",
+                        // text: "You clicked them all!",
+                        // icon: "success",
+                        // button: "New Game",
+                        //     });
+                      }
+  
+                  }
+            }
+        }
+    }
+
+
+
+
+    function rotateTower(){
+        // 1 BTurret 2 Bgun 3 Bcannon
+        tower = towerArr[towerArr.length - 1];
+        if(tower.direction == 1){
+            tower.direction = 2;
+            console.log(towerImgArr[tower.towerPosition].src);
+            console.log();
+
+            if(recentTower == 1){
+                towerImgArr[tower.towerPosition].src = "../images/bdright.png";
+            }
+
+            if(recentTower == 2){
+                towerImgArr[tower.towerPosition].src = "../images/bsright.png";
+            }
+
+            if(recentTower == 3){
+                towerImgArr[tower.towerPosition].src = "../images/bcright.png";
+            }
+
+            if(recentTower == 4){
+                towerImgArr[tower.towerPosition].src = "../images/rdright.png";
+            }
+
+            if(recentTower == 5){
+                towerImgArr[tower.towerPosition].src = "../images/rsright.png";
+            }
+
+            if(recentTower == 6){
+                towerImgArr[tower.towerPosition].src = "../images/rcright.png";
+            }
+
+            if(recentTower == 7){
+                towerImgArr[tower.towerPosition].src = "../images/stesseract.png";
+            }
+        }
+
+
+        else if(tower.direction == 2){
+            tower.direction = 3;
+            
+            if(recentTower == 1){
+                towerImgArr[tower.towerPosition].src = "../images/bddown.png";
+            }
+
+            if(recentTower == 2){
+                towerImgArr[tower.towerPosition].src = "../images/bsdown.png";
+            }
+
+            if(recentTower == 3){
+                towerImgArr[tower.towerPosition].src = "../images/bcdown.png";
+            }
+
+            if(recentTower == 4){
+                towerImgArr[tower.towerPosition].src = "../images/rddown.png";
+            }
+
+            if(recentTower == 5){
+                towerImgArr[tower.towerPosition].src = "../images/rsdown.png";
+            }
+
+            if(recentTower == 6){
+                towerImgArr[tower.towerPosition].src = "../images/rcdown.png";
+            }
+
+            if(recentTower == 7){
+                towerImgArr[tower.towerPosition].src = "../images/stesseract.png";
+            }
+        }
+
+
+        else if(tower.direction == 3){
+            tower.direction = 4;
+            if(recentTower == 1){
+                towerImgArr[tower.towerPosition].src = "../images/bdleft.png";
+            }
+
+            if(recentTower == 2){
+                towerImgArr[tower.towerPosition].src = "../images/bsleft.png";
+            }
+
+            if(recentTower == 3){
+                towerImgArr[tower.towerPosition].src = "../images/bcleft.png";
+            }
+
+            if(recentTower == 4){
+                towerImgArr[tower.towerPosition].src = "../images/rdleft.png";
+            }
+
+            if(recentTower == 5){
+                towerImgArr[tower.towerPosition].src = "../images/rsleft.png";
+            }
+
+            if(recentTower == 6){
+                towerImgArr[tower.towerPosition].src = "../images/rcleft.png";
+            }
+
+            if(recentTower == 7){
+                towerImgArr[tower.towerPosition].src = "../images/stesseract.png";
+            }
+            
+        }
+
+
+        else if(tower.direction == 4){
+            tower.direction = 1;
+            if(recentTower == 1){
+                towerImgArr[tower.towerPosition].src = "../images/bdup.png";
+            }
+
+            if(recentTower == 2){
+                towerImgArr[tower.towerPosition].src = "../images/bsup.png";
+            }
+
+            if(recentTower == 3){
+                towerImgArr[tower.towerPosition].src = "../images/bcup.png";
+            }
+
+            if(recentTower == 4){
+                towerImgArr[tower.towerPosition].src = "../images/rdup.png";
+            }
+
+            if(recentTower == 5){
+                towerImgArr[tower.towerPosition].src = "../images/rsup.png";
+            }
+
+            if(recentTower == 6){
+                towerImgArr[tower.towerPosition].src = "../images/rcup.png";
+            }
+
+            if(recentTower == 7){
+                towerImgArr[tower.towerPosition].src = "../images/stesseract.png";
+            }
+        }
+    }
+
+
+
+
+    //function map2Click(){
+        canvasId.style = "background: url('map2.jpg')";
+        canvasId.width="1333";
+        canvasId.height="713";
+
+        direction = 3;
+
+        startFromX = parseInt(455);
+        startFromY = parseInt(0);
+
+        startToX = parseInt(455);
+        startToY = parseInt(0);
+
+        currMap = 2;
+        
+        //***draw first image at startinc coordinates***
+        c = document.getElementById("canvasId");
+        ctx = c.getContext("2d");
+
+        for(let i = 0; i < zombieArr.length; i++){
+           ctx.drawImage(zombieImgArr[i], zombieArr[i].fromX, zombieArr[i].fromY);
+       }
+    //}
+
+
+    var paused = false;
+
+    function pauseClick(){
+        console.log("pauseClick");
+        clearInterval(myInterval);
+        if(myInterval == false){
+            clearInterval(myInterval);
+            myInterval = false;
+        }
+
+        if(myInterval == true){
+            map()
+        }
+    }
+
+
+    //1:north 2:east 3:south 4:west
+    var myInterval;
+    function start() {
+        console.log("start");
+        map();
+    }
+
+    var distance = 0;
+    var difficulty = sessionStorage.getItem("difficulty");
+    function map(){
+    
+    if(myInterval){
+            clearInterval(myInterval);
+            myInterval = false;
+            myBtn.value = "Start";
+        }
+        else{
+            
+            myInterval = setInterval(function(){
+                myBtn.value = "Stop";
+
+                var difficultyMod = 0;
+
+                
+                if(difficultySlider.value == 1){
+                    difficultyMod = 300;
+                }
+                if(difficultySlider.value == 2){
+                    difficultyMod = 150;
+                }
+                if(difficultySlider.value == 3){
+                    difficultyMod = 75;
+                }
+                
+
+            if(currMap == 2){
+                   // console.log("map2");
+                    //***redraw background of canvas and redraw image each time***
+                    canvasId.style = "background: url('map2.jpg')";
+                    canvasId.width="1333";
+                    canvasId.height="713";
+
+                    createZombie(startFromX, startFromY + distance, startToX, startToY, direction);
+                    distance = distance - difficultyMod;
+
+                    for(let i = 0; i < zombieArr.length; i++){
+                        ctx.drawImage(zombieImgArr[i], zombieArr[i].fromX, zombieArr[i].fromY);
+                    }
+
+                    console.log(towerArr.length);
+                    for(let i = 0; i < towerArr.length; i++){
+                        //console.log(towerArr[i].placed)
+                        //console.log("towerplaced");
+                        ctx.drawImage(towerImgArr[i], towerArr[i].x, towerArr[i].y);
+                        towerShoot(towerArr[i]);
+
+                        //if(towerImgArr[0] != null){
+                            
+                        }
+                
+                    //turn 1
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromY == 55 && zombieArr[i].fromX < 500){
+                            zombieArr[i].direction = 4;
+                            //console.log("1");
+                            zombieArr[i].toY = 55;
+                        }
+                    }
+
+                    //turn 2
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromX == 57){
+                            zombieArr[i].direction = 3;
+                            //console.log("2");
+                            zombieArr[i].toX = 57;
+                        }
+                    }
+
+                    //turn 3
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromY == 600){
+                            zombieArr[i].direction = 2;
+                            //console.log("3");
+                            zombieArr[i].toY = 600;
+                        }
+                    }
+                    //turn 4
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromX == 1260 && zombieArr[i].fromY > 590){
+                            zombieArr[i].direction = 1;
+                            zombieArr[i].toX = 1260;
+                            //console.log("4");
+                        }
+                    }
+                    //turn 5
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromY == 60 && zombieArr[i].fromX > 1250){
+                            zombieArr[i].direction = 4;
+                            zombieArr[i].toY = 80;
+                        // console.log("5");
+                        }
+                    }
+                    //turn 5
+                    for(let i = 0; i < zombieArr.length; i++){
+                        if(zombieArr[i].fromX == 865 && zombieArr[i].fromY < 100){
+                            zombieArr[i].direction = 1;
+                            zombieArr[i].toX = 865;
+                            //console.log("6");
+                        }
+                    }
+                }
+
+                var context = document.getElementById("canvasId").getContext("2d");
+
+                for(let i = 0; i < zombieArr.length; i++){
+                    context.moveTo(zombieArr[i].fromX, zombieArr[i].fromY);
+                    context.lineTo(zombieArr[i].fromX, zombieArr[i].fromY);
+                }
+
+                //north
+                for(let x = 0; x < zombieArr.length ;x++){
+                   // console.log("direction");
+                    //console.log(zombieArr[x].direction)
+                    if(zombieArr[x].direction == 1){
+                        zombieArr[x].fromY -=1;
+                    }
+                    //east
+                    else if(zombieArr[x].direction == 2){
+                        zombieArr[x].fromX +=1;
+                    }
+                    //south
+                    else if(zombieArr[x].direction == 3){
+                        zombieArr[x].fromY +=1;
+                    }
+                    //west
+                    else if(zombieArr[x].direction == 4){
+                        zombieArr[x].fromX -=1;
+                    }
+            }
+
+            if(currMap == 1){
+                for(let i = 0; i < zombieArr.length; i++){
+                    if(zombieArr[i].fromY > 600 && zombieArr[i].fromX == -5){
+                        gameHealth = gameHealth - 1;
+                        if(gameHealth == 0){
+                            clearInterval(myInterval);
+                            myInterval = false;
+                            myBtn.value = "Start";
+                        }
+
+                    }
+                /**
+                    if(zombieArr[i].fromY > 713 || zombieArr[i].fromY < 0){
+                        clearInterval(myInterval);
+                        myInterval = false;
+                        myBtn.value = "Start";
+                    }
+                    **/
+                }
+            }
+/**
+            if(currMap == 3){
+                if(f1.fromX > 682 || f1.fromX < 1){
+                    clearInterval(myInterval);
+                    myInterval = false;
+                    myBtn.value = "Start";
+                }
+                if(f1.fromY > 335 || f1.fromY < 0){
+                    clearInterval(myInterval);
+                    myInterval = false;
+                    myBtn.value = "Start";
+                }
+            }
+            **/
+
+        }, 5);
+    }
+}
+
+     //look at other canvas methods!
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+
+<head>
+    <title>Main Menu</title>
+</head>
+<style>
+.button{
+	background-color:white;
+	border-color:black;
+	outline-style:solid;
+	color:black;
+	border: 1px solid black;
+	padding: 10px 50px;
+	font-size: 40px;
+	display: inline-block;
+}
+.shop{
+	padding: 10px 45px;
+}
+.difficulty{
+	padding: 10px 17px;
+}
+</style>
+<body style="background-color:#8E8E8E; text-align:center">
+	<h1 style="text-align:center; font-size: 60px">Survivor Defense</h1>
+	<script>
+		let difficulty = sessionStorage.getItem("difficulty");
+		if(difficulty === null){
+			sessionStorage.setItem("difficulty", "easy");
+		}
+		if(sessionStorage.getItem("tower1") === null){
+			sessionStorage.setItem("tower1", 1);
+		}
+		if(sessionStorage.getItem("tower2") === null){
+			sessionStorage.setItem("tower2", 2);
+		}
+		if(sessionStorage.getItem("tower3") === null){
+			sessionStorage.setItem("tower3", 3);
+		}
+		if(sessionStorage.getItem("tower4") === null){
+			sessionStorage.setItem("tower4", 4);
+		}
+		if(sessionStorage.getItem("tower5") === null){
+			sessionStorage.setItem("tower5", 5);
+		}
+	</script>
+	<br><br>
+	<button type="button" class="button" onclick="location.href = 'selectMap.html';">Start</button>
+	<br><br>
+	<button type="button" class="button shop" onclick="location.href = 'shop.html';">Shop</button>
+	<br><br>
+	<button type="button" class="button difficulty" onclick="location.href = 'difficulty.html';">Difficulty</button>
+	<br><br>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+
+<head>
+    <title>Difficulty</title>
+</head>
+<script>
+function setDifficultyEasy() {
+	sessionStorage.setItem("difficulty", "easy")
+}
+function setDifficultyNormal() {
+	sessionStorage.setItem("difficulty", "normal")
+}
+function setDifficultyHard() {
+	sessionStorage.setItem("difficulty", "hard")
+}
+</script>
+<style>
+.button{
+	background-color:white;
+	border-color:black;
+	outline-style:solid;
+	color:black;
+	border: 1px solid black;
+	padding: 10px 50px;
+	font-size: 40px;
+	display: inline-block;
+}
+.normal{
+	padding: 10px 30px;
+}
+.hard{
+	padding: 10px 51px;
+}
+</style>
+<body style="background-color:#8E8E8E; text-align:center">
+	<h1 style="text-align:center; font-size: 60px">Difficulty</h1>
+	<br><br>
+	<button type="button" class="button" onclick="location.href = 'mainMenu.html'; setDifficultyEasy();">Easy</button>
+	<br><br>
+	<button type="button" class="button normal" onclick="location.href = 'mainMenu.html'; setDifficultyNormal();">Normal</button>
+	<br><br>
+	<button type="button" class="button hard" onclick="location.href = 'mainMenu.html'; setDifficultyHard();">Hard</button>
+	<br><br>
+</body>
+</html>

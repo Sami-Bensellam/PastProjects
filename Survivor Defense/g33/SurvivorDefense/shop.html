@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<head>
+    <title>Tower Shop</title>
+</head>
+<script>
+function selectTower(towerNum) {
+	if(sessionStorage.getItem("tower1") === null) {
+		sessionStorage.setItem("tower1", towerNum)
+	}
+	else if(sessionStorage.getItem("tower2") === null) {
+		sessionStorage.setItem("tower2", towerNum)
+	}
+	else if(sessionStorage.getItem("tower3") === null) {
+		sessionStorage.setItem("tower3", towerNum)
+	}
+	else if(sessionStorage.getItem("tower4") === null) {
+		sessionStorage.setItem("tower4", towerNum)
+	}
+	else if(sessionStorage.getItem("tower5") === null) {
+		sessionStorage.setItem("tower5", towerNum)
+	}
+	else{
+		if(sessionStorage.getItem("LRU") === null || sessionStorage.getItem("LRU") == 1){
+			sessionStorage.setItem("tower1", towerNum)
+			sessionStorage.setItem("LRU", 2);
+		}
+		else if(sessionStorage.getItem("LRU") == 2){
+			sessionStorage.setItem("tower2", towerNum)
+			sessionStorage.setItem("LRU", 3);
+		}
+		else if(sessionStorage.getItem("LRU") == 3){
+			sessionStorage.setItem("tower3", towerNum)
+			sessionStorage.setItem("LRU", 4);
+		}
+		else if(sessionStorage.getItem("LRU") == 4){
+			sessionStorage.setItem("tower4", towerNum)
+			sessionStorage.setItem("LRU", 5);
+		}
+		else if(sessionStorage.getItem("LRU") == 5){
+			sessionStorage.setItem("tower5", towerNum)
+			sessionStorage.setItem("LRU", 1);
+		}
+	}
+}
+</script>
+<style>
+.button{
+	background-color:white;
+	border-color:black;
+	outline-style:solid;
+	color:black;
+	border: 1px solid black;
+	padding: 30px 30px;
+	font-size: 40px;
+	display: inline-block;
+}
+.shop{
+	padding: 30px 30px;
+}
+.difficulty{
+	padding: 30px 30px;
+}
+
+</style>
+<body style="background-color:#8E8E8E; text-align:center">
+	<h1 style="text-align:center; font-size: 60px">Shop</h1>
+	<button type="button" class="button" onclick="selectTower(1);"><img src="images/bbitmap.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(2);"><img src="images/bdrawing.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(3)"><img src="images/brtower.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(4)"><img src="images/bitmap.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(5)"><img src="images/drawing.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(6)"><img src="images/rtower.png"height="100" width="80"></button>
+	<button type="button" class="button" onclick="selectTower(7)"><img src="images/tesseract.png"height="100" width="80"></button>
+
+    <!-- <br><br>
+	<button type="button" class="button shop" onclick="location.href = 'shop.html';">Shop</button> -->
+	<br><br>
+	<button type="button" class="button back" onclick="location.href = 'mainMenu.html';">Back</button>
+	<br><br>
+</body>
+</html>
